@@ -5,12 +5,9 @@ import Sidebar from "../components/Sidebar";
 export default function Profile() {
   const navigate = useNavigate();
 
-  const currentUser =
-    JSON.parse(localStorage.getItem("currentUser"));
-
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const [user, setUser] = useState(currentUser || {});
-  const wishlist =
-    JSON.parse(localStorage.getItem("wishlist")) || [];
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
   useEffect(() => {
     if (!currentUser) {
@@ -25,25 +22,16 @@ export default function Profile() {
   };
 
   const handleSave = () => {
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Update user inside users array
     const updatedUsers = users.map((u) =>
       u.email === user.email ? user : u
     );
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(updatedUsers)
-    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    localStorage.setItem("currentUser", JSON.stringify(user));
 
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify(user)
-    );
-
-    alert("Profile Updated Successfully!");
+    alert("Profile updated successfully!");
   };
 
   const handleLogout = () => {
@@ -57,52 +45,69 @@ export default function Profile() {
       <Sidebar />
 
       <div className="main-content">
-        <h2>My Profile</h2>
+        <h2 className="page-title">My Profile</h2>
 
         <div className="profile-card">
-          <label>Full Name</label>
-          <input
-            name="name"
-            value={user.name || ""}
-            onChange={handleChange}
-          />
+          <div className="profile-grid">
 
-          <label>Email</label>
-          <input
-            value={user.email || ""}
-            disabled
-          />
+            <div className="form-group">
+              <label>Full Name</label>
+              <input
+                name="name"
+                value={user.name || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-          <label>Age</label>
-          <input
-            name="age"
-            type="number"
-            value={user.age || ""}
-            onChange={handleChange}
-          />
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                value={user.email || ""}
+                disabled
+                className="readonly"
+              />
+            </div>
 
-          <label>State</label>
-          <input
-            name="state"
-            value={user.state || ""}
-            onChange={handleChange}
-          />
+            <div className="form-group">
+              <label>Age</label>
+              <input
+                name="age"
+                type="number"
+                value={user.age || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-          <label>District</label>
-          <input
-            name="district"
-            value={user.district || ""}
-            onChange={handleChange}
-          />
+            <div className="form-group">
+              <label>Occupation</label>
+              <input
+                name="occupation"
+                value={user.occupation || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-          <label>Occupation</label>
-          <input
-            name="occupation"
-            value={user.occupation || ""}
-            onChange={handleChange}
-          />
+            <div className="form-group">
+              <label>State</label>
+              <input
+                name="state"
+                value={user.state || ""}
+                onChange={handleChange}
+              />
+            </div>
 
-          <button onClick={handleSave}>
+            <div className="form-group">
+              <label>District</label>
+              <input
+                name="district"
+                value={user.district || ""}
+                onChange={handleChange}
+              />
+            </div>
+
+          </div>
+
+          <button className="save-btn" onClick={handleSave}>
             Save Changes
           </button>
         </div>
@@ -112,10 +117,7 @@ export default function Profile() {
           <p>{wishlist.length} schemes in wishlist</p>
         </div>
 
-        <button
-          className="logout-btn"
-          onClick={handleLogout}
-        >
+        <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </div>

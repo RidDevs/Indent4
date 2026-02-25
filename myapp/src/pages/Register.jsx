@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DisclaimerModal from "../components/DisclaimerModal";
+import { states } from "../data/states";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -51,7 +52,6 @@ export default function Register() {
       return;
     }
 
-    // Check duplicate email
     const existingUsers =
       JSON.parse(localStorage.getItem("users")) || [];
 
@@ -98,6 +98,7 @@ export default function Register() {
           <input
             name="name"
             placeholder="Full Name"
+            value={form.name}
             onChange={handleChange}
             required
           />
@@ -106,6 +107,7 @@ export default function Register() {
             name="email"
             type="email"
             placeholder="Email Address"
+            value={form.email}
             onChange={handleChange}
             required
           />
@@ -114,38 +116,61 @@ export default function Register() {
             name="age"
             type="number"
             placeholder="Age"
+            value={form.age}
             onChange={handleChange}
             required
           />
 
-          <select name="gender" onChange={handleChange} required>
+          <select
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+            required
+          >
             <option value="">Select Gender</option>
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>
           </select>
 
-          <input
+          {/* ✅ Updated State Dropdown */}
+          <select
             name="state"
-            placeholder="State"
+            value={form.state}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select State</option>
+            {states.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </select>
 
           <input
             name="district"
             placeholder="District"
+            value={form.district}
             onChange={handleChange}
             required
           />
 
-          <select name="areaType" onChange={handleChange}>
+          <select
+            name="areaType"
+            value={form.areaType}
+            onChange={handleChange}
+          >
             <option value="">Area Type</option>
             <option>Rural</option>
             <option>Urban</option>
           </select>
 
-          <select name="incomeRange" onChange={handleChange}>
+          <select
+            name="incomeRange"
+            value={form.incomeRange}
+            onChange={handleChange}
+          >
             <option value="">Income Range</option>
             <option>Below 1L</option>
             <option>1L - 3L</option>
@@ -153,7 +178,11 @@ export default function Register() {
             <option>Above 5L</option>
           </select>
 
-          <select name="casteCategory" onChange={handleChange}>
+          <select
+            name="casteCategory"
+            value={form.casteCategory}
+            onChange={handleChange}
+          >
             <option value="">Caste Category</option>
             <option>General</option>
             <option>OBC</option>
@@ -164,6 +193,7 @@ export default function Register() {
           <input
             name="occupation"
             placeholder="Occupation"
+            value={form.occupation}
             onChange={handleChange}
             required
           />
@@ -172,6 +202,7 @@ export default function Register() {
             name="password"
             type="password"
             placeholder="Create Password"
+            value={form.password}
             onChange={handleChange}
             required
           />
@@ -180,6 +211,7 @@ export default function Register() {
             name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
+            value={form.confirmPassword}
             onChange={handleChange}
             required
           />

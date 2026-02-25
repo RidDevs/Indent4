@@ -6,9 +6,12 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 import Wishlist from "./pages/Wishlist";
+import GoogleTranslate from "./components/GoogleTranslate";
 
 function App() {
   return (
+    <>
+    <GoogleTranslate/>
     <Routes>
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/profile" element={<Profile />} />
@@ -18,6 +21,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
     </Routes>
+    </>
   );
 }
 

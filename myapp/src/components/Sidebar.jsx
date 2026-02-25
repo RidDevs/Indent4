@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../assets/yojana-logo.png";
 
 export default function Sidebar() {
   const navigate = useNavigate();
@@ -10,26 +11,28 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <h2 className="logo">CivicTech</h2>
+      <div className="sidebar-logo">
+        <img src={logo}alt="Yojana.Search.logo"/>
+        </div>
 
       <NavLink to="/dashboard" className="nav-item">
-        🏠 Home
+        Home
       </NavLink>
 
       <NavLink to="/profile" className="nav-item">
-        👤 Profile
+        Profile
       </NavLink>
 
       <NavLink to="/search" className="nav-item">
-        🔍 Search
+        Search
       </NavLink>
 
       <NavLink to="/wishlist" className="nav-item">
-        ⭐ Wishlist
+        Wishlist
       </NavLink>
 
       <button className="logout" onClick={handleLogout}>
-        🚪 Logout
+    Logout
       </button>
     </div>
   );
