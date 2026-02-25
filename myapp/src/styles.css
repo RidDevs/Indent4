@@ -385,20 +385,31 @@ form button {
   border-radius: 10px;
   border: 1px solid #ddd;
   font-size: 14px;
-  transition: 0.2s ease;
+  transition: all 0.3s ease;
 }
 
+/* Hover effect for input fields */
+.form-group input:hover:not(.readonly) {
+  background: #fafaff;
+  border-color: #4c4cff;
+  box-shadow: 0 5px 15px rgba(76, 76, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Focus effect */
 .form-group input:focus {
   outline: none;
   border-color: #4c4cff;
   box-shadow: 0 0 0 3px rgba(76,76,255,0.15);
 }
 
+/* Readonly styling */
 .readonly {
   background: #f3f3f3;
   cursor: not-allowed;
 }
 
+/* Save Button */
 .save-btn {
   width: 100%;
   padding: 14px;
@@ -409,7 +420,6 @@ form button {
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
-
   transition: all 0.3s ease;
 }
 
@@ -423,10 +433,12 @@ form button {
   transform: scale(0.98);
 }
 
+/* Profile Stats Section */
 .profile-stats {
   margin-top: 30px;
 }
 
+/* Logout Button */
 .logout-btn {
   margin-top: 25px;
   padding: 12px 30px;
@@ -440,14 +452,14 @@ form button {
 }
 
 .logout-btn:hover {
-  background: #ff4d6d;   /* lighter red */
+  background: #ff4d6d;
   box-shadow: 0 8px 18px rgba(255, 77, 109, 0.35);
   transform: translateY(-2px);
 }
 
 .logout-btn:active {
   transform: scale(0.97);
-}
+}+
 
 /* ===============================
    DISCLAIMER MODAL
