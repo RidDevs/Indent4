@@ -1,51 +1,108 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import SchemeCard from "../components/SchemeCard";
-import { schemes } from "../data/schemes";
 
 export default function Search() {
-  const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("");
+  const [params, setParams] = useState({
+    age: null,
+    gender: null,
+    occupation: null,
+    incomeRange: null,
+  });
 
-  const filteredSchemes = schemes.filter((scheme) =>
-    scheme.name.toLowerCase().includes(query.toLowerCase()) &&
-    (category === "" || scheme.category === category)
-  );
+  const [results, setResults] = useState([]);
+
+  const toggleParam = (key, value) => {
+    setParams((prev) => ({
+      ...prev,
+      [key]: prev[key] === value ? null : value,
+    }));
+  };
+
+  const sendToModel = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(params),
+      });
+
+      const data = await response.json();
+      setResults(data.schemes);
+    } catch (error) {
+      console.error("Model Error:", error);
+    }
+  };
 
   return (
     <div className="dashboard">
       <Sidebar />
 
       <div className="main-content">
-        <h2>Search All Schemes</h2>
+        <h2>AI Scheme Search</h2>
 
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search by scheme name..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
+        <div className="toggle-container">
 
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Education">Education</option>
-            <option value="Social Welfare">Social Welfare</option>
-          </select>
+          <div className="toggle-group">
+            <p>Gender</p>
+            <button
+              className={params.gender === "Male" ? "active" : ""}
+              onClick={() => toggleParam("gender", "Male")}
+            >
+              Male
+            </button>
+            <button
+              className={params.gender === "Female" ? "active" : ""}
+              onClick={() => toggleParam("gender", "Female")}
+            >
+              Female
+            </button>
+          </div>
+
+          <div className="toggle-group">
+            <p>Occupation</p>
+            <button
+              className={params.occupation === "Farmer" ? "active" : ""}
+              onClick={() => toggleParam("occupation", "Farmer")}
+            >
+              Farmer
+            </button>
+            <button
+              className={params.occupation === "Student" ? "active" : ""}
+              onClick={() => toggleParam("occupation", "Student")}
+            >
+              Student
+            </button>
+          </div>
+
+          <div className="toggle-group">
+            <p>Income</p>
+            <button
+              className={params.incomeRange === "Below 1L" ? "active" : ""}
+              onClick={() => toggleParam("incomeRange", "Below 1L")}
+            >
+              Below 1L
+            </button>
+            <button
+              className={params.incomeRange === "Above 5L" ? "active" : ""}
+              onClick={() => toggleParam("incomeRange", "Above 5L")}
+            >
+              Above 5L
+            </button>
+          </div>
+
         </div>
 
+        <button className="predict-btn" onClick={sendToModel}>
+          Get AI Recommendations
+        </button>
+
         <div className="schemes-list">
-          {filteredSchemes.length > 0 ? (
-            filteredSchemes.map((scheme) => (
-              <SchemeCard key={scheme.id} scheme={scheme} />
-            ))
-          ) : (
-            <p>No schemes found.</p>
-          )}
+          {results.map((scheme) => (
+            <SchemeCard key={scheme.id} scheme={scheme} />
+          ))}
         </div>
       </div>
     </div>
