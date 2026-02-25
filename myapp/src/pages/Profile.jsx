@@ -1,25 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const storedUser = JSON.parse(localStorage.getItem("user"));
 
-  const [user, setUser] = useState(storedUser || {});
-  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const currentUser =
+    JSON.parse(localStorage.getItem("currentUser"));
+
+  const [user, setUser] = useState(currentUser || {});
+  const wishlist =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, []);
+
+  if (!currentUser) return null;
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSave = () => {
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Profile Updated!");
+    const users =
+      JSON.parse(localStorage.getItem("users")) || [];
+
+    // Update user inside users array
+    const updatedUsers = users.map((u) =>
+      u.email === user.email ? user : u
+    );
+
+    localStorage.setItem(
+      "users",
+      JSON.stringify(updatedUsers)
+    );
+
+    localStorage.setItem(
+      "currentUser",
+      JSON.stringify(user)
+    );
+
+    alert("Profile Updated Successfully!");
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("isLoggedIn");
     navigate("/");
   };
 
@@ -36,6 +65,12 @@ export default function Profile() {
             name="name"
             value={user.name || ""}
             onChange={handleChange}
+          />
+
+          <label>Email</label>
+          <input
+            value={user.email || ""}
+            disabled
           />
 
           <label>Age</label>
@@ -67,7 +102,9 @@ export default function Profile() {
             onChange={handleChange}
           />
 
-          <button onClick={handleSave}>Save Changes</button>
+          <button onClick={handleSave}>
+            Save Changes
+          </button>
         </div>
 
         <div className="profile-stats">
@@ -75,7 +112,10 @@ export default function Profile() {
           <p>{wishlist.length} schemes in wishlist</p>
         </div>
 
-        <button className="logout-btn" onClick={handleLogout}>
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+        >
           Logout
         </button>
       </div>
