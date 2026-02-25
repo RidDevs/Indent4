@@ -11,7 +11,7 @@ export default function SchemeCard({ scheme }) {
     <div className="scheme-card">
       <h3>{scheme.name}</h3>
       <p>{scheme.description}</p>
-      <p><b>Category:</b> {scheme.category}</p>
+      <p><b>Category:</b> {scheme.tags.join(", ")}</p>
       <button onClick={addToWishlist}>Save</button>
     </div>
   );

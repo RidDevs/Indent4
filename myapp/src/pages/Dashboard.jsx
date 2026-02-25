@@ -41,8 +41,8 @@ export default function Dashboard() {
 
       <div className="main-content">
         <div className="tabs">
-          <button onClick={() => setTab("foryou")}>For You</button>
-          <button onClick={() => setTab("forall")}>For All</button>
+          <button onClick={() => setTab("foryou")}>Schemes For You</button>
+          <button onClick={() => setTab("forall")}>All Schemes</button>
         </div>
 
         {tab === "forall" && (

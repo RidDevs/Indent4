@@ -17,7 +17,7 @@ export default function Search() {
       <Sidebar />
 
       <div className="main-content">
-        <h2>Search Schemes</h2>
+        <h2>Search All Schemes</h2>
 
         <div className="search-bar">
           <input

@@ -50,6 +50,7 @@ export default function Profile() {
         <div className="profile-card">
           <div className="profile-grid">
 
+            {/* BASIC INFO */}
             <div className="form-group">
               <label>Full Name</label>
               <input
@@ -79,6 +80,21 @@ export default function Profile() {
             </div>
 
             <div className="form-group">
+              <label>Gender</label>
+              <select
+                name="gender"
+                value={user.gender || ""}
+                onChange={handleChange}
+              >
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            {/* SOCIAL INFO */}
+            <div className="form-group">
               <label>Occupation</label>
               <input
                 name="occupation"
@@ -87,6 +103,50 @@ export default function Profile() {
               />
             </div>
 
+            <div className="form-group">
+              <label>Income Range</label>
+              <select
+                name="incomeRange"
+                value={user.incomeRange || ""}
+                onChange={handleChange}
+              >
+                <option value="">Select Income Range</option>
+                <option>Below 1L</option>
+                <option>1L - 3L</option>
+                <option>3L - 5L</option>
+                <option>Above 5L</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Caste Category</label>
+              <select
+                name="casteCategory"
+                value={user.casteCategory || ""}
+                onChange={handleChange}
+              >
+                <option value="">Select Category</option>
+                <option>General</option>
+                <option>OBC</option>
+                <option>SC</option>
+                <option>ST</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Area Type</label>
+              <select
+                name="areaType"
+                value={user.areaType || ""}
+                onChange={handleChange}
+              >
+                <option value="">Select Area Type</option>
+                <option>Rural</option>
+                <option>Urban</option>
+              </select>
+            </div>
+
+            {/* LOCATION */}
             <div className="form-group">
               <label>State</label>
               <input
