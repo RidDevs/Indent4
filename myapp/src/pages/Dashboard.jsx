@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   if (!user) return null;
 
-  // Convert age safely to number
+
   const userAge = Number(user.age);
 
   const forYouSchemes = schemes.filter((scheme) =>

@@ -49,7 +49,7 @@ export default function Search() {
       <div className="main-content">
         <h2>AI Scheme Search</h2>
 
-        {/* BASIC INPUT FIELDS */}
+
         <div className="search-inputs">
 
           <input
@@ -78,11 +78,10 @@ export default function Search() {
 
         </div>
 
-        {/* TOGGLES */}
+  
 
         <div className="toggle-container">
 
-          {/* Gender */}
           <div className="toggle-group">
             <p>Gender</p>
             {["Male", "Female", "Other"].map((g) => (
@@ -96,7 +95,7 @@ export default function Search() {
             ))}
           </div>
 
-          {/* Occupation */}
+
           <div className="toggle-group">
             <p>Occupation</p>
             {[
@@ -139,12 +138,12 @@ export default function Search() {
 
         </div>
 
-        {/* SEARCH BUTTON */}
+    
         <button className="predict-btn" onClick={handleSearch}>
           Search Schemes
         </button>
 
-        {/* RESULTS */}
+       
         <div className="schemes-list">
           {results.map((scheme) => (
             <SchemeCard key={scheme.id} scheme={scheme} />

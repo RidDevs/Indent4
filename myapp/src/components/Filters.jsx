@@ -15,7 +15,7 @@ export default function Filters({ filters, setFilters }) {
   return (
     <div className="filters">
 
-      {/* State Filter */}
+      
       <select
         value={filters.state || ""}
         onChange={(e) =>
@@ -30,7 +30,7 @@ export default function Filters({ filters, setFilters }) {
         ))}
       </select>
 
-      {/* Occupation Filter */}
+      
       <select
         value={filters.occupation || ""}
         onChange={(e) =>

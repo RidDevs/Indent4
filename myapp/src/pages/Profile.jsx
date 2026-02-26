@@ -50,7 +50,7 @@ export default function Profile() {
         <div className="profile-card">
           <div className="profile-grid">
 
-            {/* BASIC INFO */}
+          
             <div className="form-group">
               <label>Full Name</label>
               <input
@@ -93,7 +93,7 @@ export default function Profile() {
               </select>
             </div>
 
-            {/* SOCIAL INFO */}
+        
             <div className="form-group">
               <label>Occupation</label>
               <input
@@ -146,7 +146,7 @@ export default function Profile() {
               </select>
             </div>
 
-            {/* LOCATION */}
+            
             <div className="form-group">
               <label>State</label>
               <input

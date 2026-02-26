@@ -29,30 +29,30 @@ export default function DisclaimerModal({ onAccept }) {
           Read and acknowledge the following before using it.
         </p>
 
-        {/* Fraud Section */}
+        
         <div className="disclaimer-section">
           <div className="sec-title">🚨 Fraud & Scam Awareness</div>
           <ul className="point-list">
-            <li>🔴 Government schemes are <strong>always free</strong>. Never pay anyone.</li>
-            <li>🔴 Beware of fake websites, apps, or agents promising guaranteed approval.</li>
-            <li>🔴 Never share Aadhaar, bank account, OTP, or passwords.</li>
-            <li>🔴 Apply only through official <strong>gov.in / nic.in</strong> domains.</li>
-            <li>🔴 Report fraud: National Cybercrime Helpline <strong>1930</strong>.</li>
+            <li> Government schemes are <strong>always free</strong>. Never pay anyone.</li>
+            <li> Beware of fake websites, apps, or agents promising guaranteed approval.</li>
+            <li> Never share Aadhaar, bank account, OTP, or passwords.</li>
+            <li> Apply only through official <strong>gov.in / nic.in</strong> domains.</li>
+            <li> Report fraud: National Cybercrime Helpline <strong>1930</strong>.</li>
           </ul>
         </div>
 
-        {/* Awareness Section */}
+        
         <div className="awareness-section">
           <div className="sec-title">💡 Important Awareness Points</div>
           <ul className="point-list">
-            <li>⚠️ This is an <strong>AI-powered informational tool only</strong>.</li>
-            <li>⚠️ Always verify scheme details on official government websites.</li>
-            <li>⚠️ Eligibility, benefits and procedures may change without notice.</li>
-            <li>⚠️ This tool is not affiliated with any government body.</li>
+            <li> This is an <strong>AI-powered informational tool only</strong>.</li>
+            <li> Always verify scheme details on official government websites.</li>
+            <li> Eligibility, benefits and procedures may change without notice.</li>
+            <li> This tool is not affiliated with any government body.</li>
           </ul>
         </div>
 
-        {/* Checkboxes */}
+        
         <div className="checks">
           <label className="check-row">
             <input

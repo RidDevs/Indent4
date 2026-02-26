@@ -133,7 +133,7 @@ export default function Register() {
             <option>Other</option>
           </select>
 
-          {/* ✅ Updated State Dropdown */}
+       
           <select
             name="state"
             value={form.state}
