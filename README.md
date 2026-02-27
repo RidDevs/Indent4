@@ -411,7 +411,7 @@ Authentication is currently client-side using **localStorage**:
 
 ## 👥 Team
 
-Built for **Indent4 Hackathon** by RidDevs.
+Built for **Indent4 Hackathon** by Abhilekh | Nibbir | Rittam | Ritupal
 
 ---
 
