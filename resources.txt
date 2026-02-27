@@ -1,0 +1,7 @@
+Resources
+
+Google Drive Folder:
+https://drive.google.com/drive/folders/12kefU_Ic09-ccfMfziHN4Q4Npa5JkW1o?usp=sharing
+
+Contents: - Demo video - Trained model - Instructions to run the model
+locally
