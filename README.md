@@ -1,6 +1,6 @@
-# 🇮🇳 Indent4 — Indian Government Schemes Finder
+# Indent4 — Indian Government 🇮🇳 Schemes Finder
 
-A full-stack AI-powered web application that helps Indian citizens discover government schemes relevant to them based on their profile — state, occupation, age, income, and more.
+A full-stack LM web application that helps Indian citizens discover government schemes relevant to them based on their profile — state, occupation, age, income, and more.
 
 ---
 
@@ -35,7 +35,7 @@ Indent4/
 
 ---
 
-## 🧠 How the AI Model Works
+##  How the Model Works
 
 The model uses **all-MiniLM-L6-v2** (a SentenceTransformer) fine-tuned on Indian Government Scheme data, combined with a **FAISS** vector index for fast semantic search.
 
